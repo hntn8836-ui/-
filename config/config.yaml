@@ -109,6 +109,7 @@ platforms:
 # 每个源配置：id(唯一标识)、name(显示名称)、url(订阅地址)
 # enabled: 可选，默认 true
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
+# max_items: 可选，单个源最多抓取条数（主程序未配置时默认 50）
 # ===============================================================
 rss:
   enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
@@ -140,6 +141,18 @@ rss:
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
+
+    # 中文科技/效率源。推送里的 RSS 区域仍按 frequency_words.txt 关键词过滤。
+    # https://36kr.com/feed 当前返回 HTML，www 地址才是 RSS。
+    - id: "sspai"
+      name: "少数派"
+      url: "https://sspai.com/feed"
+      max_items: 5                   # 每源最多抓取条数
+
+    - id: "36kr"
+      name: "36氪"
+      url: "https://www.36kr.com/feed"
+      max_items: 5                   # 每源最多抓取条数
 
     # 自定义源示例
     # - id: "custom-feed"
